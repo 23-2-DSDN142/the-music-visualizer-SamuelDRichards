@@ -8,9 +8,13 @@ let y = 300; //adjust the postion of the fish on the y - axis
 
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
-  background(20)
+  background(45, 79, 34)
 
   angleMode(DEGREES);
+
+
+  fill(255, 204, 0)
+
 
 let map1 = map(vocal, 0, 100, 200, 600)
 let map2 = map(vocal, 0, 100, 100, 300) 
@@ -23,46 +27,41 @@ let map5 = map(bass, 0, 100, 80, -35)
 
 let map6 = map(bass, 0, 100, 20, -10)
 
-  fill(255, 204, 0)
 
+  if (bass > 70){
+    ellipse(width/9, height/1.2 + map3, 30, 30)
+
+  } else {
+    ellipse(width/9, height/1.2 , 30, 30)
+  }
+
+
+  if (bass > 70){
+    ellipse(width/15, height/1.2 + map4, 30, 30)
+
+  } else {
+    ellipse(width/15, height/1.2 , 30, 30)
+  }
+
+  if (bass > 70){
+    ellipse(width/1.5, height/1.255 + map5, 100, 100)
+
+  } else {
+    ellipse(width/1.5, height/1.255 , 100, 100)
+
+  }
+
+
+  if (bass > 70){
+    ellipse(width/3, height/1.75 + map6, 500, 500)
+
+  } else {
+    ellipse(width/3, height/1.75 , 500, 500)
+
+  }
 
 
   fishnotevil(x, y, vocal)
-
-
-
-
-  // if (bass > 70){
-  //   ellipse(width/9, height/1.2 + map3, 30, 30)
-
-  // } else {
-  //   ellipse(width/9, height/1.2 , 30, 30)
-  // }
-
-
-  // if (bass > 70){
-  //   ellipse(width/15, height/1.2 + map4, 30, 30)
-
-  // } else {
-  //   ellipse(width/15, height/1.2 , 30, 30)
-  // }
-
-  // if (bass > 70){
-  //   ellipse(width/1.5, height/1.255 + map5, 100, 100)
-
-  // } else {
-  //   ellipse(width/1.5, height/1.255 , 100, 100)
-
-  // }
-
-
-  // if (bass > 70){
-  //   ellipse(width/3, height/1.75 + map6, 500, 500)
-
-  // } else {
-  //   ellipse(width/3, height/1.75 , 500, 500)
-
-  // }
 }
 
 

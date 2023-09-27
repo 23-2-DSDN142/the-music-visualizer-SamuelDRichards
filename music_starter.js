@@ -3,8 +3,8 @@
 
 //background is 1500(width) x 800(height)
 
-let x = -250; //adjust the postion of the fish on the x - axis
-let y = 250; //adjust the postion of the fish on the y - axis
+let x = -100; //adjust the postion of the fish on the x - axis
+let y = 300; //adjust the postion of the fish on the y - axis
 
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
@@ -28,9 +28,6 @@ let map6 = map(bass, 0, 100, 20, -10)
 
 
   fishnotevil(x, y, vocal)
-
-
-
 
 
 
@@ -82,11 +79,19 @@ let map6 = map(bass, 0, 100, 20, -10)
 
 function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
 
-  rotate(270)
+  rotate(295)
 
   scale(2)
 
 
+  fill(54, 79, 110); //reseting the fill to the blue
+
+  stroke(229, 216, 189); //setting th stroke color to a off white
+
+  strokeWeight(1);
+  triangle(x + 55, y + 10, x + 44, y + 13, x + 33, y + 40); //body fin
+
+  
 
   strokeWeight(0); //I dont want most of the fish to have an outline
 
@@ -120,10 +125,8 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
 
   stroke(54, 79, 110) //blue
 
-  // fill(229, 216, 189) // use for setting up fish
-  // stroke(229, 216, 189)
 
-  if (vocal > 30 && vocal < 50){
+  if (vocal > 50 && vocal < 65){
 
   fill(54, 79, 110) //reseting the fill to the blue
 
@@ -139,12 +142,24 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
   arc(x + 74, y + 4, 15, 12, 100, 170);  //mouth 1
   }
   else{
+    
+    if(vocal <= 50){
 
-    arc(x + 73, y + 5, 15, 5, 100, 170); //happy mouth
+
+    fill(54, 79, 110); //reseting the fill to the blue
+
+    stroke(229, 216, 189); //setting th stroke color to a off white
+  
+    strokeWeight(1.5); //so that you can see the fin, mouth, and body line
+
+    arc(x + 72, y + 5, 15, 5, 100, 170); //happy mouth
+
+    stroke(54, 79, 110)
+    }
 
   }
   
-  if (vocal >= 50 && vocal < 70){
+  if (vocal >= 65 && vocal < 75){
 
   fill(54, 79, 110) //reseting the fill to the blue
 
@@ -155,13 +170,11 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
 
   fill(229, 216, 189) //white
 
-   stroke(54, 79, 110) //blue
-
     arc(x + 74, y + 4, 20, 16, 100, 170); // mouth 2
   }
  
 
-  if (vocal >= 70 && vocal < 75) {
+  if (vocal >= 75 && vocal < 85) {
     fill(54, 79, 110) //reseting the fill to the blue
 
   triangle(x + 58, y + 2, x + 65, y + 2, x + 75, y )  //top of mouth
@@ -170,12 +183,10 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
 
   fill(229, 216, 189) //white
 
-   stroke(54, 79, 110) //blue
-
     arc(x + 74, y + 4, 25, 25, 100, 170); // mouth 3
   }
     
-  if (vocal >= 75) {
+  if (vocal >= 85) {
 
     fill(54, 79, 110) //reseting the fill to the blue
 
@@ -185,7 +196,6 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
   
     fill(229, 216, 189) //white
   
-     stroke(54, 79, 110) //blue
     arc(x + 74, y + 4, 35, 35, 100, 170); // mouth 3
   }
   
@@ -197,9 +207,8 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
 
   stroke(229, 216, 189); //setting th stroke color to a off white
 
-
   strokeWeight(1);
-  triangle(x + 50, y + 10, x + 48, y + 15, x + 30, y + 18); //body fin
+  triangle(x + 55, y + 10, x + 44, y + 13, x + 38, y + 37); //body fin
 
 
 
@@ -218,55 +227,3 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // textFont('Helvetica'); // please use CSS safe fonts
-  // rectMode(CENTER)
-  // textSize(24);
-
-  //  let bar_spacing = height / 10;
-  //  let bar_height = width / 12;
-  //  let bar_pos_x = width / 2;
- 
-
-  //  // vocal bar is red
-  //  fill(200, 0, 0);
-  //  rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
-  //  fill(0);
-  //  text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-  //  // drum bar is green
-  //  fill(0, 200, 0);
-  //  rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-  //  fill(0);
-  //  text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-  //  // bass bar is blue
-  //  fill(50, 50, 240);
-  //  rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-  //  fill(0);
-  //  text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-  //  // other bar is white
-  //  fill(200, 200, 200);
-  //  rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-  //  fill(0);
-  //  text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-  //  fill(255, 255, 0);
- 
-  //  // display "words"
-  //  textAlign(CENTER);
-  //  textSize(vocal);
-  //  text(words, width/2, height/3);

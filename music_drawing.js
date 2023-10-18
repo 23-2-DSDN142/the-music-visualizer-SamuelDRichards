@@ -2,10 +2,21 @@ let firstRun = true
 let mountains;
 let hills;
 let lake;
-let tree;
+let tree1;
+let tree2;
+let tree3;
+let tree4;
+let tree5;
+let tree6;
+let tree7;
 let mic;
-let speaker1;
-let speaker2;
+let speakerRight1;
+let speakerRight2;
+let speakerLeft1;
+let speakerLeft2;
+let speakerLeftnosie;
+let speakerRightnosie;
+let bassforspeakers = 0
 let x = -100; //adjust the postion of the fish on the x - axis
 let y = 500; //adjust the postion of the fish on the y - axis
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
@@ -23,13 +34,37 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
 
     lake = loadImage('pt3_image_2.png')
 
-    tree = loadImage('pt3_image_3.png')
+    tree1 = loadImage('tree_1.png')
+
+    tree2 = loadImage('tree_2.png')
+
+    tree3 = loadImage('tree_3.png')
+
+    tree4 = loadImage('tree_4.png')
+
+    tree5 = loadImage('tree_5.png')
+
+    tree6 = loadImage('tree_6.png')
+
+    tree7 = loadImage('tree_7.png')
+    
 
     mic = loadImage('pt3_image_4.png')
 
-    speaker1 = loadImage('pt3_image_5.png')
 
-    speaker2 = loadImage('pt3_image_6.png')
+    speakerRight1 = loadImage('speaker_right_1.png')
+
+    speakerRight2 = loadImage('speaker_right_2.png')
+
+    speakerLeft1 = loadImage('speaker_left_1.png')
+
+    speakerLeft2 = loadImage('speaker_left_2.png')
+
+    speakerLeftnosie = loadImage('speaker_left_nosie.png')
+
+    speakerRightnosie = loadImage('speaker_right_nosie.png')
+
+    
 
     firstRun = false
 
@@ -43,13 +78,11 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
 
   image(lake, 0, 0)
 
-  image(tree, 0, 0)
-
   image(mic, 0, 0)
 
-  image(speaker1, 0, 0)
+  speakers(bass)
 
-  image(speaker2, 0, 0)
+  tree(drum)
 
 push()
   fishnotevil(x, y, vocal)
@@ -58,6 +91,46 @@ pop()
 }
 
 
+function speakers(bass) {
+
+  image(speakerRight1, 0, 0)
+
+  image(speakerLeft1, 0, 0)
+ 
+  if(bass = 75){
+    bassforspeakers +++ 1
+  }
+
+  if(bassforspeakers === 3){
+  image(speakerRight2, 0, 0)
+  mage(speakerLeft1, 0, 0)
+  bassforspeakers  === 0
+  }
+}
+
+function tree(drum) {
+  if (drum <= 40){
+    image(tree1, 0, 0)
+  }
+  if (drum >= 40 && drum < 50){
+    image(tree2, 0, 0)
+  }
+  if (drum >= 50 && drum < 60){
+    image(tree3, 0, 0)
+  }
+  if (drum >= 60 && drum < 70){
+    image(tree4, 0, 0)
+  }
+  if (drum >= 70 && drum < 80){
+    image(tree5, 0, 0)
+  }
+  if (drum >= 80 && drum < 90){
+    image(tree6, 0, 0)
+  }
+  if (drum >= 90 && drum <= 100){
+    image(tree7, 0, 0)
+  }
+}
 
 function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
 
@@ -108,24 +181,8 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
   stroke(54, 79, 110) //blue
 
 
-  if (vocal > 50 && vocal < 65){
 
-  fill(54, 79, 110) //reseting the fill to the blue
-
-  triangle(x + 58, y + 2, x + 65, y + 2, x + 75, y - 0)  //top of mouth
-
-  triangle(x + 60, y + 15, x + 63, y + 15, x + 72, y + 10 ) //bottom of mouth
-
-
-  fill(229, 216, 189) //white
-
-   stroke(54, 79, 110) //blue
-
-  arc(x + 74, y + 4, 15, 12, 100, 170);  //mouth 1
-  }
-  else{
-    
-    if(vocal <= 50){
+  if(vocal <= 50){
 
 
     fill(54, 79, 110); //reseting the fill to the blue
@@ -139,6 +196,22 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
     stroke(54, 79, 110)
     }
 
+
+  if (vocal > 50 && vocal < 65){
+
+  fill(54, 79, 110) //reseting the fill to the blue
+
+  triangle(x + 58, y + 2, x + 65, y + 2, x + 75, y - 0)  //top of mouth
+
+  triangle(x + 60, y + 15, x + 63, y + 15, x + 72, y + 10 ) //bottom of mouth
+
+
+  //  fill(4,142,131) //pond 
+   fill(229, 216, 189) //white
+
+   stroke(54, 79, 110) //blue
+
+  arc(x + 74, y + 4, 15, 12, 100, 170);  //mouth 1
   }
   
   if (vocal >= 65 && vocal < 75){
@@ -151,6 +224,7 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
   triangle(x + 60, y + 15, x + 63, y + 15, x + 72, y + 12 ) //bottom of mouth
 
   fill(229, 216, 189) //white
+  // fill(4,142,131) //pond 
 
     arc(x + 74, y + 4, 20, 16, 100, 170); // mouth 2
   }
@@ -164,6 +238,7 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
   triangle(x + 55, y + 9, x + 59, y + 18, x + 70.5, y + 16.5 ) //bottom of mouth
 
   fill(229, 216, 189) //white
+  // fill(4,142,131) //pond 
 
     arc(x + 74, y + 4, 25, 25, 100, 170); // mouth 3
   }
@@ -177,6 +252,7 @@ function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
     triangle(x + 52, y + 12, x + 50, y + 22, x + 69, y + 21 ) //bottom of mouth
   
     fill(229, 216, 189) //white
+    // fill(4,142,131) //pond 
   
     arc(x + 74, y + 4, 35, 35, 100, 170); // mouth 3
   }

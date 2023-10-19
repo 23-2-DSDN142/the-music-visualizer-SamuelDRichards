@@ -6,9 +6,6 @@ let tree1;
 let tree2;
 let tree3;
 let tree4;
-let tree5;
-let tree6;
-let tree7;
 let mic;
 let speakerRight1;
 let speakerRight2;
@@ -16,13 +13,16 @@ let speakerLeft1;
 let speakerLeft2;
 let speakerLeftnosie;
 let speakerRightnosie;
-let bassforspeakers = 0
 let x = -100; //adjust the postion of the fish on the x - axis
 let y = 500; //adjust the postion of the fish on the y - axis
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 //background is 1500(width) x 800(height)
 function draw_one_frame(words, vocal, drum, bass, other,counter) {
   angleMode(DEGREES);
+
+  let speakerBounce = map(bass, 0, 180, 5, -50)
+  let treeBounce = map(bass, 0, 200, 10, -50)
+  let mountainBounce = map(bass, 0, 200, 3, -10)
 
   if(firstRun){
 
@@ -41,12 +41,6 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
     tree3 = loadImage('tree_3.png')
 
     tree4 = loadImage('tree_4.png')
-
-    tree5 = loadImage('tree_5.png')
-
-    tree6 = loadImage('tree_6.png')
-
-    tree7 = loadImage('tree_7.png')
     
 
     mic = loadImage('pt3_image_4.png')
@@ -69,10 +63,9 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
     firstRun = false
 
   }
-  background(180)
+  background(155, 5, 255)
 
-
-  image(mountains, 0, 0)
+  mountain(mountainBounce, bass)
 
   image(hills, 0, 0)
 
@@ -80,9 +73,9 @@ function draw_one_frame(words, vocal, drum, bass, other,counter) {
 
   image(mic, 0, 0)
 
-  speakers(bass)
+  speakers(bass, speakerBounce)
 
-  tree(drum)
+  tree(drum, bass, treeBounce)
 
 push()
   fishnotevil(x, y, vocal)
@@ -90,46 +83,100 @@ pop()
 
 }
 
-
-function speakers(bass) {
-
-  image(speakerRight1, 0, 0)
-
-  image(speakerLeft1, 0, 0)
- 
-  if(bass = 75){
-    bassforspeakers +++ 1
+function mountain(mountainBounce, bass) {
+  if(bass > 50){
+    image(mountains, 0, 0 + mountainBounce)
   }
-
-  if(bassforspeakers === 3){
-  image(speakerRight2, 0, 0)
-  mage(speakerLeft1, 0, 0)
-  bassforspeakers  === 0
+  else{
+    image(mountains, 0, 0)
   }
+  
 }
 
-function tree(drum) {
+function speakers(bass, speakerBounce) {
+
+  if(bass > 15){
+
+    image(speakerRight1, 0, 0 + speakerBounce)
+
+    image(speakerLeft1, 0, 0 + speakerBounce)
+ 
+  if(bass >= 70){
+
+  image(speakerRight2, 0, 0 + speakerBounce)
+
+  image(speakerLeft2, 0, 0 + speakerBounce)
+  }
+
+  if(bass >= 74){
+
+    image(speakerLeftnosie, 0, 0 + speakerBounce)
+  
+    image(speakerRightnosie, 0, 0 + speakerBounce)
+    }
+    if(bass >= 50 && bass < 60){
+
+      image(speakerLeftnosie, 0, 0 + speakerBounce)
+    
+      image(speakerRightnosie, 0, 0 + speakerBounce)
+      }
+    
+  }
+  else{
+    image(speakerRight1, 0, 0)
+
+    image(speakerLeft1, 0, 0)
+
+  }
+
+  // image(speakerRight1, 0, 0)
+
+  // image(speakerLeft1, 0, 0)
+ 
+  // if(bass >= 70){
+
+  // image(speakerRight2, 0, 0)
+
+  // image(speakerLeft2, 0, 0)
+  // }
+
+  // if(bass >= 74){
+
+  //   image(speakerLeftnosie, 0, 0)
+  
+  //   image(speakerRightnosie, 0, 0)
+  //   }
+}
+
+function tree(drum, bass, treeBounce) {
+  if(bass > 40){
   if (drum <= 40){
+    image(tree1, 0, 0 + treeBounce)
+  }
+  if (drum >= 40 && drum < 60){
+    image(tree2, 0, 0 + treeBounce)
+  }
+  if (drum >= 60 && drum < 80){
+    image(tree3, 0, 0 + treeBounce)
+  }
+  if (drum >= 80 && drum <= 100){
+    image(tree4, 0, 0 + treeBounce)
+  }
+}
+else{
+  if (drum <= 10){
     image(tree1, 0, 0)
   }
-  if (drum >= 40 && drum < 50){
+  if (drum >= 10 && drum < 20){
     image(tree2, 0, 0)
   }
-  if (drum >= 50 && drum < 60){
+  if (drum >= 20 && drum < 60){
     image(tree3, 0, 0)
   }
-  if (drum >= 60 && drum < 70){
+  if (drum >= 60 && drum <= 100){
     image(tree4, 0, 0)
   }
-  if (drum >= 70 && drum < 80){
-    image(tree5, 0, 0)
-  }
-  if (drum >= 80 && drum < 90){
-    image(tree6, 0, 0)
-  }
-  if (drum >= 90 && drum <= 100){
-    image(tree7, 0, 0)
-  }
+}
 }
 
 function fishnotevil(x, y, vocal) { //the totally definitely not evil fish
